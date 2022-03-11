@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vegan Food Shop - Productos 100% Orgánicos y Saludables</title>
+    <meta name="author" content="Jose M. Coronado">
+    <meta name="description"
+          content="Tienda de productos veganos 100% orgánicos y saludables">
+    <meta name="keywords" content="productos, veganos, vegan, orgánico, saludable, tienda, hamburguesas, patatas, comida">
+    <meta name="urlImageFb" property="og:image" content="imgs/portada-seo.jpg">
+    <meta name="descriptionFb" property="og:description"
+          content="Tienda de productos veganos 100% orgánicos y saludables">
+    <!-- Meta Web -->
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel='shortcut icon' type='image/png' href='imgs/favicon.png'/>
+    <link rel="icon" sizes="16x16 32x32 64x64" href="imgs/favicon.png">
+    <link rel="apple-touch-icon" href="imgs/favicon.png">
+    <meta name="apple-mobile-web-app-title" content="https://github.com/jscoronado">
+    <meta name="application-name" content="Vegan Food Shop">
+    <meta name="theme-color" content="#6c955c">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- CSS Web-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body id="body" class="home header-fixed-top dynamic-backgrounds">
+
+<header id="header" class="header navbar bg-transparent fixed-top" data-aos="fade-down" data-aos-duration="800"
+        data-aos-once="true">
+    <div class="container-xl">
+        <a class="navbar-brand" href="./index.html">
+            <img class="navbar-brand__logo logo-white" src="./imgs/logo-blanco.png" alt="Logo Vegan Food Shop">
+            <img class="navbar-brand__logo logo-black" src="./imgs/logo.png" alt="Logo Vegan Food Shop">
+        </a>
+
+        <button id="cart" class="basket navbar-toggle" aria-label="cart Toggle">
+            <img src="imgs/cart.png" alt="Icon Cart" class="img__navbar-toggle"/>
+            <div id="quantity" class="quantity__navbar-toggle bouncing" style="display: none;">1</div>
+        </button>
+    </div>
+
+    <div id="list-cart">
+        <nav class="navbar-cart">
+            <div class="container">
+                <div class="items__list-cart col-12">
+                    <ul></ul>
+                </div>
+                <div class="action__list-cart col-12">
+                    <button type="button" id="checkout" class="btn btn-sm btn-default" data-toggle="modal" data-target="#toCheckout" style="display: none;"> <i class="fa fa-check-square-o pull-left fa-lg" aria-hidden="true"></i> <span>Checkout</span> </button>
+                    <button type="reset" id="clear" class="btn btn-sm btn-default" style="display: none;"> <i class="fa fa-trash-o pull-left fa-lg" aria-hidden="true"></i> <span> Empty basket </span></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="main-content content">
+    <section id="hero" class="content-section hero-section section-hero background-attachment">
+        <div class="content-hero container-xl principal">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-12 offset-md-4">
+                    <div class="basket items__list-cart" style="background: #c0c0c0; height: 100px; width: 30vw">
+                        <ul></ul>
+                    </div>
+                    <div id="myElem" style="display: none;">¡Producto añadido al carrito!</div>
+                    <h1 class="content-hero__title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600"
+                        data-aos-offset="0" data-aos-once="true">Nuestros Productos</h1>
+                    <h2 class="content-hero__subtitle" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600"
+                        data-aos-offset="0" data-aos-once="true">Arrastra los productos al items__list-cart para realizar el pedido</h2>
+                    <div id="product" class="products-stand">
+                        <ul class="products stand-food">
+                            <li data-id="product-1" class="item-product"data-aos="fade-up" data-aos-delay="300" data-aos-duration="600"
+                                data-aos-offset="0" data-aos-once="true">
+                                <div class="img__item-product">
+                                    <img src="./imgs/burger-01.png" alt="Hamburguesa 1">
+                                </div>
+                                <div class="info__item-product">
+                                    <h3>Amelie Burger</h3>
+                                    <span class="price" data-price="9.50">9.50€</span>
+                                    <span class="desc">Burger NoChicken con queso brie, cebolla caramelizada y salsa de miel y mostaza.</span>
+                                </div>
+                            </li>
+                            <li data-id="product-2" class="item-product" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600"
+                                data-aos-offset="0" data-aos-once="true">
+                                <div class="img__item-product">
+                                    <img src="./imgs/burger-02.png" alt="Hamburguesa 2">
+                                </div>
+                                <div class="info__item-product">
+                                    <h3>Woody Burger</h3>
+                                    <span class="price" data-price="11.50">11.50€</span>
+                                    <span class="desc">Burger de NoBeef con cebolla crunchy, queso raclette, cebolla caramelizada y salsa bbq.</span>
+                                </div>
+                            </li>
+                            <li data-id="product-3" class="item-product" data-aos="fade-up" data-aos-delay="500" data-aos-duration="600"
+                                data-aos-offset="0" data-aos-once="true">
+                                <div class="img__item-product">
+                                    <img src="./imgs/burger-03.png" alt="Hamburguesa 3">
+                                </div>
+                                <div class="info__item-product">
+                                    <h3>Snoopy Burger</h3>
+                                    <span class="price" data-price="10">10€</span>
+                                    <span class="desc">Burger hecha a base de verduras con guacamole, queso feta, lechuga y salsa ranchera.</span>
+                                </div>
+                            </li>
+                            <li data-id="product-4" class="item-product yellow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="600"
+                                data-aos-offset="0" data-aos-once="true">
+                                <div class="img__item-product">
+                                    <img src="./imgs/complement-01.png" alt="Nachos">
+                                </div>
+                                <div class="info__item-product ui-draggable ui-draggable-handle">
+                                    <h3>Ignacios con guacamole</h3>
+                                    <span class="price" data-price="7.50">7.50€</span>
+                                    <span class="desc">Guacamole casero al más puro estilo mexicano.</span>
+                                </div>
+                            </li>
+                            <li data-id="product-5" class="item-product yellow" data-aos="fade-up" data-aos-delay="900" data-aos-duration="600"
+                                data-aos-offset="0" data-aos-once="true">
+                                <div class="img__item-product">
+                                    <img src="./imgs/complement-02.png" alt="Nachos">
+                                </div>
+                                <div class="info__item-product ui-draggable ui-draggable-handle">
+                                    <h3>Nuggets Nochicken</h3>
+                                    <span class="price" data-price="6">6€</span>
+                                    <span class="desc">Hechos a base de proteína de soja.</span>
+                                </div>
+                            </li>
+                            <li data-id="product-6" class="item-product purple" data-aos="fade-up" data-aos-delay="1100" data-aos-duration="600"
+                                data-aos-offset="0" data-aos-once="true">
+                                <div class="img__item-product">
+                                    <img src="./imgs/milkshake.png" alt="Nachos">
+                                </div>
+                                <div class="info__item-product ui-draggable ui-draggable-handle">
+                                    <h3>Nuggets Nochicken</h3>
+                                    <span class="price" data-price="4">4€</span>
+                                    <span class="desc">Helado con un toque de vainilla, leche, nata, crema de cacahuete y sirope de dulce de leche.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script>
+    <script src="js/dist/main.js"></script>
+    <script src="js/dist/cart.js"></script>
+</main>
+</body>
+
+</html>

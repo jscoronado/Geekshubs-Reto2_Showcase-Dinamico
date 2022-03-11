@@ -1,0 +1,513 @@
+/*
+Proyecto: Matryoshka Rock-Café
+Author: Jose M. Coronado
+Description: Style page of Matryoshka Rock-Café
+Version: 1.0
+*/
+
+/********************** TABLE OF CONTENTS **********************
+    # 1. Fonts
+    # 2. Reset
+    # 3. Global Settings - Typography
+    # 4. Components
+    # 5. Header
+    # 6. Header cart
+    # 7. Hero - Main
+    # 8. Products
+***************************************************************/
+
+/*--------------------------------------------------------------
+# 1. FONTS
+--------------------------------------------------------------*/
+@font-face {
+    font-family: "Pitter";
+    src: url("../fonts/pitter/pitter.ttf");
+    font-weight: 600;
+    font-style: normal
+}
+@font-face {
+    font-family: "Hello Angeline Sans";
+    src: url("../fonts/angeline/hello-angeline-sans.otf");
+    font-weight: 600;
+    font-style: normal
+}
+
+
+/*--------------------------------------------------------------
+# 2. RESET
+--------------------------------------------------------------*/
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/grain_body.png');
+    background-size: 100% auto;
+    background-repeat: repeat;
+    background-position: top;
+    z-index: 98;
+    pointer-events: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    outline: 0 !important;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/*--------------------------------------------------------------
+# 3. GLOBAL SETTINGS - TYPOGRAPHY
+--------------------------------------------------------------*/
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #363636;
+    background-color: #fff;
+    margin: 0 auto;
+}
+h1, h2, h3, h4{
+    font-family: 'Hello Angeline Sans', serif;
+    font-weight: 600;
+}
+h1 {
+    font-size: 54px;
+    color: #303030 !important;
+    margin-bottom: 0;
+    position: relative;
+    letter-spacing: 4px;
+}
+h2{
+    font-size: 28px;
+    color: #6c955c !important;
+    margin-bottom: 30px;
+    position: relative;
+    letter-spacing: 1px;
+}
+h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 21px;
+}
+p {
+    font-size: 18px;
+}
+.content-section {
+    padding-top: 120px;
+    padding-bottom: 30px
+}
+
+@media (max-width: 991px) {
+    p {
+        font-size: 16px;
+    }
+}
+@media (max-width: 600px) {
+    .row {
+        margin: 0 !important;
+    }
+}
+
+/*--------------------------------------------------------------
+# 4. COMPONENTS
+--------------------------------------------------------------*/
+a {
+    color: #c23c48;
+}
+a, a:hover, a:active {
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+a:focus, a:hover {
+    color: inherit;
+}
+a:focus::after {
+    border: none;
+}
+.background-attachment {
+    background-attachment: fixed !important;
+}
+
+/* Buttons */
+
+/*--------------------------------------------------------------
+# 5. HEADER
+--------------------------------------------------------------*/
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 !important;
+    z-index: 100;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out !important;
+}
+header .container-xl {
+    width: 100%;
+    max-width: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+
+@media (max-width: 991px) {
+    header.fixed-top-active {
+        background: rgb(194, 60, 72) !important;
+        transition: all 0.5s ease-in-out !important;
+    }
+    header .container-xl {
+        padding: 15px 0;
+    }
+}
+
+/* ## Header - Logo */
+header.navbar .navbar-brand {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    /*transform: translateX(-50%);*/
+    z-index: 10;
+    margin-right: auto;
+    pointer-events: all;
+    outline: none;
+    transition: transform 2.4s cubic-bezier(.19,1,.22,1);
+}
+header.navbar .navbar-brand .navbar-brand__logo {
+    width: 120px;
+    height: 120px;
+    -moz-transition: width 0.3s, height 0.3s, opacity 0.5s;
+    -o-transition: width 0.3s, height 0.3s, opacity 0.5s;
+    -webkit-transition: width 0.3s, height 0.3s, opacity 0.5s;
+    transition: width 0.3s, height 0.3s, opacity 0.5s
+}
+header.navbar .navbar-brand .navbar-brand__logo.logo-white {
+    opacity: 0;
+    position: absolute;
+}
+header.navbar .navbar-brand .navbar-brand__logo.logo-black {
+    position: absolute;
+    opacity: 1
+}
+header.navbar .navbar-brand .navbar-brand__logo.logo-fixed {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 180px;
+    height: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s cubic-bezier(.19,1,.22,1);
+}
+body.content-text-dark .header.navbar .navbar-brand .navbar-brand__logo.logo-black, body.show-cart header.navbar .navbar-brand .navbar-brand__logo.logo-white {
+    opacity: 1
+}
+body.content-text-dark .header.navbar .navbar-brand .navbar-brand__logo.logo-white, body.show-cart header.navbar .navbar-brand .navbar-brand__logo.logo-black {
+    opacity: 0
+}
+body.show-cart header.navbar .navbar-brand {
+    transform: translateX(calc(50vw - 120px));
+    transition: transform 2.4s cubic-bezier(.19,1,.22,1);
+}
+
+@media (max-width: 991px) {
+    header .navbar-toggle {
+        right: 10px;
+    }
+    header.navbar .navbar-brand {
+        top: 0;
+    }
+    body.show-cart header.navbar .navbar-brand {
+        transform: translateX(calc(50vw - 90px));
+        transition: transform 2.4s cubic-bezier(.19,1,.22,1);
+    }
+    header.navbar.fixed-top-active .navbar-brand {
+        top: 10px;
+        left: 30px;
+        transition: transform 1s cubic-bezier(.19,1,.22,1);
+    }
+    header.navbar .navbar-brand .navbar-brand__logo {
+        width: 90px;
+        height: 90px;
+    }
+    body.content-text-dark .header.navbar .navbar-brand .navbar-brand__logo.logo-white {
+        opacity: 1;
+    }
+    header.navbar.fixed-top-active .navbar-brand__logo.logo-white, header.navbar.fixed-top-active .navbar-brand__logo.logo-black {
+        opacity: 0 !important;
+        pointer-events: none;
+        transition: all 1s cubic-bezier(.19,1,.22,1);
+    }
+    header.navbar.fixed-top-active .navbar-brand__logo.logo-fixed {
+        opacity: 1;
+        top: 5px;
+        pointer-events: all;
+        transition: all 1s cubic-bezier(.19,1,.22,1);
+    }
+}
+
+/* ## HEADER - Button Cart */
+header .navbar-toggle {
+    position: relative;
+    background: transparent;
+    border: 0;
+    z-index: 10;
+    padding: 4px;
+    margin: 0 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: all;
+    transition: transform 1.2s cubic-bezier(.19,1,.22,1);
+}
+header .navbar-toggle:hover {
+    background: #f1f1f1;
+    transition: all 0.3s ease-in-out;
+}
+header .navbar-toggle img {
+    width: 45px;
+    transition: all 0.3s ease-in-out;
+}
+body.show-cart header.navbar button.navbar-toggle {
+    background: #fdac26;
+    transition: all 0.3s ease-in-out;
+}
+body.show-cart header.navbar button.navbar-toggle img {
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease-in-out;
+}
+
+body.show-cart header.navbar button.navbar-toggle #quantity-badge {
+    width: 30px;
+    height: 30px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 33%;
+    left: 39%;
+    font-size: 14px;
+    transition: all 0.5s;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@media (max-width: 991px) {
+    body.content-text-dark header .btn-header {
+        color: #efe1d9;
+        border-color: #efe1d9;
+    }
+}
+
+@media (max-width: 600px) {
+    body header .btn-header {
+        display: none;
+    }
+}
+
+/*--------------------------------------------------------------
+# 6. HEADER CART
+--------------------------------------------------------------*/
+#list-cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    pointer-events: none;
+}
+nav.navbar-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: #2b2b2b;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 99;
+    pointer-events: all;
+    transition: transform 1.5s cubic-bezier(.36,.33,0,1);
+    transform: translateX(100%);
+}
+body.show-cart nav.navbar-cart {
+    transform: translateX(0);
+    transition: transform 2s cubic-bezier(.19,1,.22,1);
+}
+nav.navbar-cart .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    min-height: 100%;
+    width: 80%;
+    max-width: 920px;
+    text-align: center;
+}
+
+/*--------------------------------------------------------------
+# 7. HERO
+--------------------------------------------------------------*/
+main {
+    position: relative;
+    width: 100vw;
+    z-index: 4;
+}
+section.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../imgs/fondo-portada.png');
+    background-color: transparent;
+    background-size: 36%;
+    background-repeat: no-repeat;
+    background-position: -10% 66%;
+}
+section.hero-section .content-hero > .row {
+    width: 100vw;
+    padding: 0 8%;
+}
+
+@media (max-width: 991px) {
+    section.hero-section h1 {
+        font-size: 90px;
+    }
+}
+@media (max-width: 600px) {
+    section.hero-section h1 {
+        font-size: 78px;
+    }
+    section.hero-section .content-hero h1 {
+        font-size: 3.2rem;
+    }
+}
+
+@keyframes scrollLoop {
+    0% {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+@keyframes scrollLoopIcon {
+    0% {
+        transform: translate(-20%)
+    }
+    to {
+        transform: translate(20%)
+    }
+}
+
+/*--------------------------------------------------------------
+# 8. PRODUCTOS
+--------------------------------------------------------------*/
+ul.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+ul.products li.item-product {
+    position: relative;
+    width: 31.3%;
+    margin: 1% 1% 5% 1%;
+    padding: 30px;
+    background: #f1f1f1;
+    border-radius: 50px;
+    border: 2px solid #f1f1f1;
+    list-style: none;
+    cursor: -webkit-grab;
+}
+ul.products li.item-product:hover {
+    background: rgb(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 10px rgb(0, 0, 0, 0.33);
+    transition: all 0.3s ease-in-out;
+}
+ul.products li.item-product:before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 40px;
+    width: 200px;
+    height: 200px;
+    background: #549658;
+    border-radius: 50%;
+    transition: all 0.5s ease-in-out;
+}
+ul.products li.item-product:hover:before {
+    top: -20px;
+    transition: all 0.5s ease-in-out;
+}
+ul.products li.item-product.yellow:before {
+    background: #ffad26;
+}
+ul.products li.item-product.purple:before {
+    background: #aa9cb5;
+}
+
+/* ## Image Product */
+ul.products li.item-product .img__item-product img {
+    display: block;
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    margin: -80px auto 10px auto;
+    -webkit-filter: drop-shadow(2px 2px 9px #777);
+    filter: drop-shadow(2px 2px 9px #777);
+}
+
+/* ## Data Product */
+ul.products li.item-product .info__item-product {
+    text-align: center;
+}
+ul.products li.item-product .info__item-product .price {
+    font-family: 'Hello Angeline Sans', serif;
+    font-size: 28px;
+    color: #fdfdfd;
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    padding: 15px 15px;
+    border-radius: 50%;
+    background: #303030;
+    border: 2px solid #f1f1f1;
+}
+
+
+
+
+
+
