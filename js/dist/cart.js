@@ -303,3 +303,13 @@ addEvent(document, 'readystatechange', function() {
 	addEvent(cart_product, 'dragover', onDragOver);
 });
 
+/* # Set missages (.aviso)
+-------------------------------------------------------------- */
+function showMessage(id, data) {
+	document.getElementById(id).innerHTML = data;
+	document.getElementById(id).style.display = "block";
+	setTimeout(function() {
+		document.getElementById(id).innerHTML = "";
+		document.getElementById(id).style.display = "none";
+	},3000);
+}
