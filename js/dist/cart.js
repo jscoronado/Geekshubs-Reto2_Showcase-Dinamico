@@ -116,3 +116,33 @@ function onDragEnd(ev) {
 		}
 	});
 }
+
+/* # Print list products
+-------------------------------------------------------------- */
+function showProducts(products)
+{
+	document.getElementById("productos").innerHTML = "";
+	let delayElement = 100;
+
+	products.forEach((product) => {
+		const enableDraggable = 'draggable="true"';
+
+		document.getElementById("productos").innerHTML += `
+			<li id="product-${product.id}" class="item-product ${product.color}" ${enableDraggable} 
+			data-aos="fade-up" data-aos-delay="${delayElement}" data-aos-duration="600" data-aos-offset="0" data-aos-once="true"  
+			ondrag="onDrag(event)" ondragend="onDragEnd(event)">
+				<div class="img__item-product">
+					<img src="${product.image}" alt="${product.title}">
+				</div>
+				<div class="info__item-product">
+					<h3>${product.title}</h3>
+					<span class="price" data-price="${product.price}">${product.price}€</span>
+					<span class="desc">${product.desc}</span>
+				</div>
+			</li>
+   		`;
+
+		delayElement = delayElement + 200;
+	});
+}
+
