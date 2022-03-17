@@ -74,3 +74,45 @@ var products = [
 		color: 'purple',
 	},
 ];
+
+/* # Drag % Drop
+-------------------------------------------------------------- */
+function onDrag(ev)  {
+	ev.target.classList.add("product-drag");
+	document.getElementById("cart").classList.add("product-drag");
+	document.getElementById("hero").classList.add("opacity-section");
+}
+
+function onDragOver(ev)  {
+	ev.preventDefault();
+	ev.dataTransfer.dropEffect = "copy";
+}
+
+function onDrop(ev) {
+	ev.preventDefault();
+
+	try {
+		let product = document.getElementById(ev.dataTransfer.getData("text/html"));
+		if(ev.dataTransfer.dropEffect == 'copy') {
+			const product_cart = product.cloneNode(true);
+			product_cart.removeAttribute("id");
+			document.getElementsByClassName("items__list-cart").appendChild(product_cart);
+		}
+
+	} catch(err) {
+		console.error(err);
+	}
+}
+
+function onDragEnd(ev) {
+	let itemId = ev.target.getAttribute("id");
+	ev.target.classList.remove("product-drag");
+	document.getElementById("cart").classList.remove("product-drag");
+	document.getElementById("hero").classList.remove("opacity-section");
+
+	window.products.forEach((p) => {
+		if("product-" + p.id == itemId) {
+			saveListCart(p.id);
+		}
+	});
+}
