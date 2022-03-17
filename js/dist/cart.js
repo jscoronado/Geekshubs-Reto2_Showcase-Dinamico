@@ -183,6 +183,7 @@ function saveListCart(productId) {
 	}
 
 	showMessage('aviso', '¡Producto añadido al carrito!');
+	document.getElementById('message-cart').innerHTML = '¡Revisa que lo tengas todo y selecciona "Enviar pedido" para preparar tu comanda!';
 }
 
 function getCountProductsCart() {
@@ -217,9 +218,9 @@ function removeFromCart(productId) {
 
 			displayTotalAmountInCart();
 			displayCartProducts();
-		}
 
-		showMessage('aviso-cart', '¡Producto eliminado del carrito!');
+			showMessage('aviso-cart', '¡Producto eliminado del carrito!');
+		}
 	}
 
 	return false;
