@@ -39,23 +39,27 @@
             <img class="navbar-brand__logo logo-black" src="./imgs/logo.png" alt="Logo Vegan Food Shop">
         </a>
 
-        <button id="cart" class="basket navbar-toggle" aria-label="cart Toggle">
+        <button id="cart" class="cart navbar-toggle" aria-label="cart Toggle" ondrop="onDrop(event)" ondragover="onDragOver(event)">
             <img src="imgs/cart.png" alt="Icon Cart" class="img__navbar-toggle"/>
-            <div id="quantity" class="quantity__navbar-toggle bouncing" style="display: none;">1</div>
+            <div id="quantity" class="quantity__navbar-toggle" style="display: none;">1</div>
         </button>
     </div>
 
     <div id="list-cart">
         <nav class="navbar-cart">
-            <div class="container">
-                <div class="items__list-cart col-12">
+            <div class="container-xl">
+                <h3 class="title__list-cart">Productos en carrito</h3>
+                <span class="subtitle__list-cart">¡Tu carrito está vacío! Vuelve a la carta para solicitar una comanda</span>
+                <div id="products-in-cart" class="items__list-cart col-12">
                     <ul></ul>
                 </div>
-                <div class="action__list-cart col-12">
-                    <button type="button" id="checkout" class="btn btn-sm btn-default" data-toggle="modal" data-target="#toCheckout" style="display: none;"> <i class="fa fa-check-square-o pull-left fa-lg" aria-hidden="true"></i> <span>Checkout</span> </button>
-                    <button type="reset" id="clear" class="btn btn-sm btn-default" style="display: none;"> <i class="fa fa-trash-o pull-left fa-lg" aria-hidden="true"></i> <span> Empty basket </span></button>
+                <div class="action__list-cart center col-12">
+                    <button type="button" id="checkout" class="btn btn-check" style="display: none;"><span>Enviar pedido</span></button>
+                    <button type="reset" id="clear" class="btn btn-empty" style="display: none;"><span>X Borrar carrito</span></button>
                 </div>
             </div>
+            <div id="aviso-cart" style="display: none;">¡Producto añadido al carrito!</div>
+            <div id="data-cart" class="data__list-cart" style="display: none;"></div>
         </nav>
     </div>
 </header>
@@ -65,84 +69,19 @@
         <div class="content-hero container-xl principal">
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-12 offset-md-4">
-                    <div class="basket items__list-cart" style="background: #c0c0c0; height: 100px; width: 30vw">
-                        <ul></ul>
-                    </div>
-                    <div id="myElem" style="display: none;">¡Producto añadido al carrito!</div>
+
+                    <div id="aviso" style="display: none;">¡Producto añadido al carrito!</div>
                     <h1 class="content-hero__title" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600"
                         data-aos-offset="0" data-aos-once="true">Nuestros Productos</h1>
                     <h2 class="content-hero__subtitle" data-aos="fade-up" data-aos-delay="100" data-aos-duration="600"
-                        data-aos-offset="0" data-aos-once="true">Arrastra los productos al items__list-cart para realizar el pedido</h2>
-                    <div id="product" class="products-stand">
-                        <ul class="products stand-food">
-                            <li data-id="product-1" class="item-product"data-aos="fade-up" data-aos-delay="300" data-aos-duration="600"
-                                data-aos-offset="0" data-aos-once="true">
-                                <div class="img__item-product">
-                                    <img src="./imgs/burger-01.png" alt="Hamburguesa 1">
-                                </div>
-                                <div class="info__item-product">
-                                    <h3>Amelie Burger</h3>
-                                    <span class="price" data-price="9.50">9.50€</span>
-                                    <span class="desc">Burger NoChicken con queso brie, cebolla caramelizada y salsa de miel y mostaza.</span>
-                                </div>
-                            </li>
-                            <li data-id="product-2" class="item-product" data-aos="fade-up" data-aos-delay="300" data-aos-duration="600"
-                                data-aos-offset="0" data-aos-once="true">
-                                <div class="img__item-product">
-                                    <img src="./imgs/burger-02.png" alt="Hamburguesa 2">
-                                </div>
-                                <div class="info__item-product">
-                                    <h3>Woody Burger</h3>
-                                    <span class="price" data-price="11.50">11.50€</span>
-                                    <span class="desc">Burger de NoBeef con cebolla crunchy, queso raclette, cebolla caramelizada y salsa bbq.</span>
-                                </div>
-                            </li>
-                            <li data-id="product-3" class="item-product" data-aos="fade-up" data-aos-delay="500" data-aos-duration="600"
-                                data-aos-offset="0" data-aos-once="true">
-                                <div class="img__item-product">
-                                    <img src="./imgs/burger-03.png" alt="Hamburguesa 3">
-                                </div>
-                                <div class="info__item-product">
-                                    <h3>Snoopy Burger</h3>
-                                    <span class="price" data-price="10">10€</span>
-                                    <span class="desc">Burger hecha a base de verduras con guacamole, queso feta, lechuga y salsa ranchera.</span>
-                                </div>
-                            </li>
-                            <li data-id="product-4" class="item-product yellow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="600"
-                                data-aos-offset="0" data-aos-once="true">
-                                <div class="img__item-product">
-                                    <img src="./imgs/complement-01.png" alt="Nachos">
-                                </div>
-                                <div class="info__item-product ui-draggable ui-draggable-handle">
-                                    <h3>Ignacios con guacamole</h3>
-                                    <span class="price" data-price="7.50">7.50€</span>
-                                    <span class="desc">Guacamole casero al más puro estilo mexicano.</span>
-                                </div>
-                            </li>
-                            <li data-id="product-5" class="item-product yellow" data-aos="fade-up" data-aos-delay="900" data-aos-duration="600"
-                                data-aos-offset="0" data-aos-once="true">
-                                <div class="img__item-product">
-                                    <img src="./imgs/complement-02.png" alt="Nachos">
-                                </div>
-                                <div class="info__item-product ui-draggable ui-draggable-handle">
-                                    <h3>Nuggets Nochicken</h3>
-                                    <span class="price" data-price="6">6€</span>
-                                    <span class="desc">Hechos a base de proteína de soja.</span>
-                                </div>
-                            </li>
-                            <li data-id="product-6" class="item-product purple" data-aos="fade-up" data-aos-delay="1100" data-aos-duration="600"
-                                data-aos-offset="0" data-aos-once="true">
-                                <div class="img__item-product">
-                                    <img src="./imgs/milkshake.png" alt="Nachos">
-                                </div>
-                                <div class="info__item-product ui-draggable ui-draggable-handle">
-                                    <h3>Nuggets Nochicken</h3>
-                                    <span class="price" data-price="4">4€</span>
-                                    <span class="desc">Helado con un toque de vainilla, leche, nata, crema de cacahuete y sirope de dulce de leche.</span>
-                                </div>
-                            </li>
+                        data-aos-offset="0" data-aos-once="true">Arrastra los productos al carrito para realizar el pedido</h2>
+
+
+
+                        <ul id="productos" class="products stand-food">
+
                         </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
