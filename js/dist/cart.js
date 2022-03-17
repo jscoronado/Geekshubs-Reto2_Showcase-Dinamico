@@ -146,3 +146,148 @@ function showProducts(products)
 	});
 }
 
+/* # Get and set data in session cart
+-------------------------------------------------------------- */
+function getListCart() {
+	const cartData = window.sessionStorage.getItem("cart_data");
+	if(!cartData) {
+		return null;
+	}
+	return JSON.parse(cartData);
+}
+
+function saveListCart(productId) {
+	if(productId) {
+		const shoppingCart = getListCart();
+
+		const prod = window.products.find((i) => i.id == productId);
+
+		let data = [];
+		if (shoppingCart === null) {
+			data.push({pid: productId, amount: 1, unit_price: prod.price});
+		} else {
+			data = shoppingCart;
+
+			const checkProductIndex = data.findIndex((i) => i.pid == productId);
+			if (checkProductIndex >=0 && checkProductIndex !== undefined) {
+				data[checkProductIndex].amount = parseInt(data[checkProductIndex].amount) + 1;
+			} else {
+				data.push({pid: productId, amount: 1, unit_price: prod.price});
+			}
+		}
+
+		window.sessionStorage.setItem("cart_data", JSON.stringify(data));
+
+		displayTotalAmountInCart();
+		displayCartProducts();
+	}
+
+	showMessage('aviso', '¡Producto añadido al carrito!');
+}
+
+function getCountProductsCart() {
+	const shoppingCart = getListCart();
+
+	let total = {count: 0, total_price: 0};
+
+	if(shoppingCart != null) {
+		const data = shoppingCart;
+		data.forEach((i) => {
+			total.count += i.amount;
+			total.total_price += i.amount * i.unit_price;
+		});
+	}
+
+	return total;
+}
+
+function removeFromCart(productId) {
+	const shoppingCart = getListCart();
+
+	if(confirm("¿Seguro que quieres eliminar?")) {
+
+		if (shoppingCart != null) {
+			const removedProduct = shoppingCart.find(i => i.pid == productId);
+			const newData = shoppingCart.filter(i => i.pid != productId);
+
+			window.sessionStorage.setItem("cart_data", JSON.stringify(newData));
+
+			// re-render products
+			showProducts(window.products);
+
+			displayTotalAmountInCart();
+			displayCartProducts();
+		}
+
+		showMessage('aviso-cart', '¡Producto eliminado del carrito!');
+	}
+
+	return false;
+}
+
+function displayTotalAmountInCart() {
+	const iconQuantity = document.getElementById("quantity");
+	const dataQuantity = document.getElementById("data-cart");
+
+	const totalProds = getCountProductsCart();
+
+	if(totalProds.count > 0) {
+		const productos = 'productos'
+		if(totalProds.count == 1) {
+			const productos = 'producto'
+		}
+
+		iconQuantity.style.display = "block";
+		iconQuantity.innerHTML = "<span class='total'>" + totalProds.count + "</span>";
+
+		dataQuantity.style.display = "block";
+		dataQuantity.innerHTML = "<div class='total'><h5>Pedido</h5><span>" + totalProds.count + " " + productos + " </span></div>" +
+			"<div class='total-price'><h5>Total</h5><span>" + (totalProds.total_price).toFixed(1) + "€</span></div>";
+	} else {
+		iconQuantity.style.display = "none";
+		iconQuantity.innerHTML = "";
+	}
+}
+
+function displayCartProducts() {
+	const shoppingCart = getListCart();
+
+	if(shoppingCart != null && shoppingCart.length > 0) {
+		const data = shoppingCart;
+
+		let html = "<ul>";
+
+		data.forEach((i) => {
+			const findProd = window.products.find((prod) => prod.id == i.pid);
+			const totalPricePerProd = (i.amount * i.unit_price).toFixed(1);
+			html +=
+			`<li data-id="${findProd.sku}" class="item item-cart">
+				<img src="${findProd.image_cart}" class="img__item-cart">
+				<div class="data__item-cart">
+					<h4 class="name__item-cart">${findProd.title}</h4>
+					<span class="price__item-cart">${findProd.price}</span>
+					<label for="qty">Cantidad:</label>
+					<input class="count form-control input-sm" id="qty" value="${i.amount}" type="number" min="1" step="1">
+				</div>
+				<a href="javascript:void(0);" class="delete delete-item" onclick="removeFromCart(${i.pid});">-</a>
+			</li>`
+		});
+
+		html += "</ul>";
+
+		document.getElementById("products-in-cart").innerHTML = html;
+		return;
+	}
+
+	showMessage('aviso-cart', '¡Tu carrito está vacío!')
+}
+
+window.onload = (e) => {
+	sessionStorage.clear();
+	showProducts(products);
+	displayTotalAmountInCart();
+	displayCartProducts();
+}
+
+
+
