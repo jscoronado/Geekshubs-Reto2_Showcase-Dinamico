@@ -247,6 +247,9 @@ function displayTotalAmountInCart() {
 	} else {
 		iconQuantity.style.display = "none";
 		iconQuantity.innerHTML = "";
+
+		dataQuantity.style.display = "none";
+		dataQuantity.innerHTML = "";
 	}
 }
 
@@ -280,6 +283,8 @@ function displayCartProducts() {
 		return;
 	}
 
+	// Empty cart when shoppingCart.length == 0
+	document.getElementById("products-in-cart").innerHTML = "";
 	showMessage('aviso-cart', '¡Tu carrito está vacío!')
 }
 
